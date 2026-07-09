@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | NutriGuide</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/nutrinest.png') }}" type="image/x-icon">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">NutriNest</div>
+        <ul class="nav-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/dietplans">Diet Plans</a></li>
+            <li><a href="/calorietracker">Calorie Tracker</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/faq">FAQs</a></li>
+            <li><a href="/contact" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2 style="font-size: 30px; color: #2C6E63;">Contact Us</h2>
+            <p>We would love to hear your feedback.</p>
+
+            <form id="contactForm">
+
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Your Feedback</label>
+                    <textarea name="feedback" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+                <p id="responseMsg"></p>
+
+            </form>
+        </div>
+    </section>
+
+    <script src="js/contact.js"></script>
+
+</body>
+
+</html>
