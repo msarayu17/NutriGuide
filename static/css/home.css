@@ -1,0 +1,169 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background: #f9fee3;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: #2C6E63;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: #2C6E63;
+}
+
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: linear-gradient(to bottom right, #d9f7e8, #f6fff9);
+}
+
+.hero h1 {
+    font-size: 50px;
+    color: #2e7d67;
+}
+
+.hero h2 {
+    font-size: 30px;
+    color: #3a8f72;
+    margin-top: 10px;
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    margin: 40px 0 20px;
+    color: #2e7d67;
+}
+
+.features {
+    padding: 20px 50px;
+}
+
+.feature-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature-card h3 {
+    color: #3a8f72;
+    margin-bottom: 10px;
+}
+
+.why {
+    padding: 20px 50px;
+}
+
+.why-list {
+    max-width: 600px;
+    margin: auto;
+    line-height: 2;
+    font-size: 18px;
+}
+
+.about-preview {
+    text-align: center;
+    padding: 40px 50px;
+}
+
+.about-preview p {
+    max-width: 700px;
+    margin: auto;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #3a8f72;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #2e6f5f;
+}
+
+.daily-tip {
+    text-align: center;
+    padding: 30px;
+    background: #e9fff3;
+    margin: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials {
+    padding: 20px 50px;
+}
+
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.testimonial-card {
+    width: 280px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.testimonial-card h4 {
+    margin-top: 10px;
+    color: #3a8f72;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: #3a8f72;
+    color: white;
+}

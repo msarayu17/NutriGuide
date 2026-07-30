@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calorie-tracker.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/nutrinest.png') }}" type="image/x-icon">
+    <title>NutriGuide | Calorie Tracker</title>
+<style>
+        .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+        label {
+        font-weight: bold;
+        }
+        input, select, button {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+        }
+        button {
+        background: #2C6E63;
+        color: white;
+        cursor: pointer;
+        border: none;
+        }
+        button:hover {
+        background: #2C6E63;
+        }
+        table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        }
+        th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        }
+        .total-box {
+        margin-top: 20px;
+        padding: 15px;
+        background: #e3ffe3;
+        border-left: 4px solid #2C6E63;
+        font-size: 18px;
+        font-weight: bold;
+        }
+        .delete-btn {
+        background: red;
+        padding: 6px 10px;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        border: none;
+        }
+        </style>
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="logo">NutriNest</div>
+    <ul class="nav-links">
+        <li><a href="/index">Home</a></li>
+        <li><a href="/diet-plans">Diet Plans</a></li>
+        <li><a href="/calorie-tracker">Calorie Tracker</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/faq">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+    <section class="calorie">
+        <h1 style="font-size: 40px;">Calorie Tracking</h1>
+        <p>Track daily calories with our smart algorithm.</p>
+    </section>
+
+    <div class="container">
+        <label for="food">Select Food:</label>
+        <select id="food">
+            <option value="">-- Select --</option>
+            <option value="rice">Rice</option>
+            <option value="chapati">Chapati</option>
+            <option value="egg">Egg</option>
+            <option value="banana">Banana</option>
+            <option value="chicken">Chicken</option>
+            <option value="milk">Milk</option>
+            <option value="oats">Oats</option>
+            <option value="fruits">Fruits</option>
+            <option value="nuts">Nuts</option>
+            <option value="green_tea">Green Tea</option>
+            <option value="brown_rice">Brown Rice</option>
+            <option value="dal">Dal</option>
+            <option value="sabzi">Sabzi</option>
+            <option value="salad">Salad</option>
+            <option value="coconut_water">Coconut Water</option>
+            <option value="grilled_chicken">Grilled Chicken</option>
+            <option value="grilled_paneer">Grilled Paneer</option>
+            <option value="soup">Soup</option>
+            <option value="milkshake">Milkshake</option>
+            <option value="protein_shake">Protein Shake</option>
+            <option value="paneer_curry">Paneer Curry</option>
+            <option value="curd">Curd</option>
+            <option value="idli">Idli</option>
+            <option value="dosa">Dosa</option>
+            <option value="peanut_butter_sandwich">Peanut Butter Sandwich</option>
+            <option value="veg_curry">Veg Curry</option>
+            <option value="veg_khichdi">Veg Khichdi</option>
+            <option value="pulao">Pulao</option>
+            <option value="omelette">Omelette</option>
+            <option value="coffee">Coffee</option>
+            <option value="fish">Fish</option>
+            <option value="sweet_potato">Sweet Potato</option>
+            <option value="veggies">Veggies</option>
+            <option value="poha">Poha</option>
+            <option value="stir_fried_veggies">Stir Fried Veggies</option>
+            <option value="seeds">Seeds</option>
+            <option value="vegan_smoothie">Vegan Smoothie</option>
+            <option value="upma">Upma</option>
+            <option value="tea">Tea</option>
+            <option value="juice">Juice</option>
+            <option value="smoothie">Smoothie</option>
+            <option value="almond_milk_oats">Almond Milk Oats</option>
+            <option value="mixed_beans">Mixed Beans</option>
+            <option value="quinoa">Quinoa</option>
+        </select>
+    
+        <label for="quantity">Quantity (bowl/glass):</label>
+        <input type="number" id="quantity" placeholder="Enter quantity">
+    
+        <button onclick="addFood()">Add</button>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Calories</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="foodList"></tbody>
+        </table>
+    
+        <div class="total-box">
+            Total Calories: <span id="totalCalories">0</span> kcal
+        </div>
+    </div>
+    
+    <script>
+        // Calorie list (per 100g or 100ml)
+        const calorieData = {
+            rice: 130,
+            chapati: 120,
+            egg: 78,        // per egg
+            banana: 105,
+            chicken: 165,
+            milk: 42,
+             oats: 150,
+            fruits: 100,
+            nuts: 700,
+            green_tea: 2,
+            brown_rice: 215,
+            dal: 170,
+            sabzi: 120,
+            salad: 60,
+            coconut_water: 45,
+            grilled_chicken: 165,
+            grilled_paneer: 265,
+            soup: 90,
+            milkshake: 300,
+            protein_shake: 120,
+            paneer_curry: 300,
+            curd: 60,
+            idli: 55,
+            dosa: 130,
+            peanut_butter_sandwich: 250,
+            veg_curry: 150,
+            veg_khichdi: 200,
+            pulao: 250,
+            omelette: 150,
+            coffee: 60,
+            fish: 140,
+            sweet_potato: 90,
+            veggies: 50,
+            poha: 200,
+            stir_fried_veggies: 120,
+            seeds: 55,
+            vegan_smoothie: 220,
+            upma: 220,
+            tea: 70,
+            juice: 110,
+            smoothie: 230,
+            almond_milk_oats: 180,
+            mixed_beans: 240,
+            quinoa: 220
+        };
+
+        let totalCalories = 0;
+
+        function addFood() {
+            const food = document.getElementById("food").value;
+            const quantity = document.getElementById("quantity").value;
+
+            if (!food || quantity <= 0) {
+                alert("Please select food and enter valid quantity.");
+                return;
+            }
+
+            // Calculate calories
+            let calories;
+            if (food === "egg") {
+                calories = calorieData[food] * quantity; // egg count
+            } else {
+                calories = calorieData[food] * quantity; // per 100g/ml
+            }
+
+            // Update total
+            totalCalories += Math.round(calories);
+
+            // Create row
+            const table = document.getElementById("foodList");
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${food.charAt(0).toUpperCase() + food.slice(1)}</td>
+                <td>${quantity}</td>
+                <td>${Math.round(calories)}</td>
+                <td><button class="delete-btn" onclick="deleteRow(this, ${Math.round(calories)})">X</button></td>
+            `;
+
+            table.appendChild(row);
+
+            // Update total display
+            document.getElementById("totalCalories").textContent = totalCalories;
+
+            // Reset inputs
+            document.getElementById("food").value = "";
+            document.getElementById("quantity").value = "";
+        }
+
+        function deleteRow(button, calories) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+
+            // Update total
+            totalCalories -= calories;
+            document.getElementById("totalCalories").textContent = totalCalories;
+        }
+    </script>
+
+</body>
+
+</html>

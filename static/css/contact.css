@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    background: #f9fee3;
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+    background: white;
+    padding: 18px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: #2C6E63;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #333;
+}
+
+.nav-links li a.active,
+.nav-links li a:hover {
+    color: #2C6E63;
+}
+
+.contact-section {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-container {
+    width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    text-align: center;
+    color: #2C6E63;
+    margin-bottom: 5px;
+}
+
+p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin: 15px 0;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #CFCFCF;
+    border-radius: 10px;
+    outline: none;
+    background: #FAFAFA;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #2C6E63;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+.btn {
+    width: 100%;
+    background: #2C6E63;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #245952;
+}
+
+#responseMsg {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
